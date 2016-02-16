@@ -5,7 +5,7 @@ describe ("Plane", function (){
 
   beforeEach(function(){
     plane = new Plane();
-    heathrow = jasmine.createSpyObj('heathrow', ['addToLoadingBay']);
+    heathrow = jasmine.createSpyObj('heathrow', ['addToLoadingBay', 'removeFromLoadingBay']);
   });
 
   describe("#status", function(){
@@ -24,6 +24,19 @@ describe ("Plane", function (){
       plane.land(heathrow);
       expect(heathrow.addToLoadingBay).toHaveBeenCalledWith(plane);
     });
+  });
+
+  describe("#takeOff", function(){
+    it("changes plane's status to flying", function(){
+      plane.takeOff(heathrow);
+      expect(plane.status).toEqual('flying');
+    });
+
+    it("instructs airport to add plane to loadin bay", function(){
+      plane.takeOff(heathrow);
+      expect(heathrow.removeFromLoadingBay).toHaveBeenCalledWith(plane);
+    });
+
   });
 
 });
