@@ -7,9 +7,14 @@ describe("Airport", function() {
   });
 
   it("should have an empty loading bay when created" , function(){
-    var a = heathrow.loading_bay
-    expect(a).toEqual([]);
+    expect(heathrow.loading_bay).toEqual([]);
   });
 
+  describe("#land", function() {
 
+    it("should be able to land a plane", function(){
+      heathrow.land('plane');
+      expect(heathrow.loading_bay).toEqual(['plane']);
+    });
+  });
 });
