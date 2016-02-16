@@ -1,7 +1,7 @@
 function Airport() {
-  this.loading_bay = [];
+  this.loadingBay = [];
 }
 
-Airport.prototype.land = function(plane){
-  this.loading_bay.push(plane);
+Airport.prototype.addToLoadingBay = function(plane){
+  this.loadingBay.push(plane);
 };
