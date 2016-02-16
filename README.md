@@ -1,2 +1,2 @@
-# JS_airport_challenge
+# JS-airport-challenge
 Airport Challenge in javascript
