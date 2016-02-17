@@ -1,5 +1,5 @@
 describe ("Weather", function(){
- var weather
+ var weather;
 
  beforeEach(function(){
    weather = new Weather();
@@ -7,11 +7,13 @@ describe ("Weather", function(){
 
  describe("isStormy", function(){
    it ("will return true 10% of the time", function(){
-     spyOn(Math, 'random').and.returnValue(1)
+     spyOn(Math, 'random').and.returnValue(0);
      expect(weather.isStormy()).toBeTruthy();
   });
+
     it ('returns false 90%ish of the time', function(){
       spyOn(Math,'random').and.returnValue(8);
-      expect(weather.isStormy()).toBeFalsey;
-    };
+      expect(weather.isStormy()).toBeFalsy();
+    });
+  });
 });

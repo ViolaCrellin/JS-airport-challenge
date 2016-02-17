@@ -24,17 +24,30 @@ describe ("Plane", function (){
       plane.land(heathrow);
       expect(heathrow.addToLoadingBay).toHaveBeenCalledWith(plane);
     });
+
+    it("plane cannot land if a plane is already landed", function(){
+      plane.land(heathrow);
+      expect(function(){plane.land(heathrow);}).toThrow("Plane is not flying, so cannot land");
+    });
   });
 
   describe("#takeOff", function(){
-    it("changes plane's status to flying", function(){
+
+    beforeEach (function(){
+      plane.land(heathrow);
       plane.takeOff(heathrow);
+    });
+
+    it("changes plane's status to flying", function(){
       expect(plane.status).toEqual('flying');
     });
 
     it("instructs airport to add plane to loadin bay", function(){
-      plane.takeOff(heathrow);
       expect(heathrow.removeFromLoadingBay).toHaveBeenCalledWith(plane);
+    });
+
+    it("plane cannot take off if a plane is already flying", function(){
+      expect(function(){plane.takeOff(heathrow);}).toThrow("Plane is flying, so cannot take off");
     });
 
   });
